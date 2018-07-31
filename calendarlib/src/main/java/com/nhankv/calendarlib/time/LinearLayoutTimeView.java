@@ -37,10 +37,6 @@ public class LinearLayoutTimeView extends LinearLayout {
     private LinearLayoutSpinner mLayoutSpinnerMinute;
     private LinearLayoutSpinner mLayoutSpinnerSecond;
 
-    private int mIndexHour = 0;
-    private int mIndexMinute = 0;
-    private int mIndexSecond = 0;
-
     public LinearLayoutTimeView(Context context) {
         super(context);
         init(context);
@@ -56,11 +52,6 @@ public class LinearLayoutTimeView extends LinearLayout {
         init(context);
     }
 
-    public LinearLayoutTimeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context);
-    }
-
     private void init(Context context) {
         initView(context);
         addView(context);
@@ -70,7 +61,7 @@ public class LinearLayoutTimeView extends LinearLayout {
 
     private void initView(Context context) {
         setWeightSum(3);
-        setPadding(10, 0, 10, 10);
+        setPadding(10, 0, 30, 10);
         setOrientation(HORIZONTAL);
         setGravity(CENTER_VERTICAL);
         setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f));
@@ -114,9 +105,12 @@ public class LinearLayoutTimeView extends LinearLayout {
                     getmLinearLayoutArrow().getmImageViewArrowDown();
 
             Calendar calendar = Calendar.getInstance();
-            mTextViewNumberHour.setText(String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)));
-            mTextViewNumberMinute.setText(String.valueOf(calendar.get(Calendar.MINUTE)));
-            mTextViewNumberSecond.setText(String.valueOf(calendar.get(Calendar.SECOND)));
+            int mIndexHour = calendar.get(Calendar.SECOND);
+            int mIndexMinute = calendar.get(Calendar.HOUR_OF_DAY);
+            int mIndexSecond = calendar.get(Calendar.MINUTE);
+            mTextViewNumberSecond.setText(String.valueOf(mIndexHour));
+            mTextViewNumberHour.setText(String.valueOf(mIndexMinute));
+            mTextViewNumberMinute.setText(String.valueOf(mIndexSecond));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -126,6 +120,7 @@ public class LinearLayoutTimeView extends LinearLayout {
         mImageViewArrowHourUp.addEvent(new ListenerUp() {
             @Override
             public void onClickUp() {
+                int mIndexHour = Integer.parseInt(mTextViewNumberHour.getText().toString());
                 if (mIndexHour < 23) {
                     mIndexHour++;
                 }
@@ -140,6 +135,7 @@ public class LinearLayoutTimeView extends LinearLayout {
         mImageViewArrowMinuteUp.addEvent(new ListenerUp() {
             @Override
             public void onClickUp() {
+                int mIndexMinute = Integer.parseInt(mTextViewNumberMinute.getText().toString());
                 if (mIndexMinute < 59) {
                     mIndexMinute++;
                 }
@@ -154,6 +150,7 @@ public class LinearLayoutTimeView extends LinearLayout {
         mImageViewArrowSecondUp.addEvent(new ListenerUp() {
             @Override
             public void onClickUp() {
+                int mIndexSecond = Integer.parseInt(mTextViewNumberSecond.getText().toString());
                 if (mIndexSecond < 59) {
                     mIndexSecond++;
                 }
@@ -168,6 +165,7 @@ public class LinearLayoutTimeView extends LinearLayout {
         mImageViewArrowHourDown.addEvent(new ListenerDown() {
             @Override
             public void onClickDown() {
+                int mIndexHour = Integer.parseInt(mTextViewNumberHour.getText().toString());
                 if (mIndexHour > 0) {
                     mIndexHour--;
                 }
@@ -182,6 +180,7 @@ public class LinearLayoutTimeView extends LinearLayout {
         mImageViewArrowMinuteDown.addEvent(new ListenerDown() {
             @Override
             public void onClickDown() {
+                int mIndexMinute = Integer.parseInt(mTextViewNumberMinute.getText().toString());
                 if (mIndexMinute > 0) {
                     mIndexMinute--;
                 }
@@ -196,6 +195,7 @@ public class LinearLayoutTimeView extends LinearLayout {
         mImageViewArrowSecondDown.addEvent(new ListenerDown() {
             @Override
             public void onClickDown() {
+                int mIndexSecond = Integer.parseInt(mTextViewNumberSecond.getText().toString());
                 if (mIndexSecond > 0) {
                     mIndexSecond--;
                 }
@@ -245,5 +245,29 @@ public class LinearLayoutTimeView extends LinearLayout {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int getmIndexHour() {
+        return Integer.parseInt(mTextViewNumberHour.getText().toString());
+    }
+
+    public void setmIndexHour(int mIndexHour) {
+        mTextViewNumberHour.setText(String.valueOf(mIndexHour));
+    }
+
+    public int getmIndexMinute() {
+        return Integer.parseInt(mTextViewNumberMinute.getText().toString());
+    }
+
+    public void setmIndexMinute(int mIndexMinute) {
+        mTextViewNumberMinute.setText(String.valueOf(mIndexMinute));
+    }
+
+    public int getmIndexSecond() {
+        return Integer.parseInt(mTextViewNumberSecond.getText().toString());
+    }
+
+    public void setmIndexSecond(int mIndexSecond) {
+        mTextViewNumberSecond.setText(String.valueOf(mIndexSecond));
     }
 }

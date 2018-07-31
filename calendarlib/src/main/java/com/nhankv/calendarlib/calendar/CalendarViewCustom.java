@@ -55,7 +55,7 @@ public class CalendarViewCustom extends MaterialCalendarView {
                         + calendarDay.getDay() + " month " + calendarDay.getMonth() + " year " +
                         calendarDay.getYear());
                 if (mListenerDateTime != null) {
-                    mListenerDateTime.onDateSelected(calendarDay.getDay(), calendarDay.getMonth(),
+                    mListenerDateTime.onDateSelected(calendarDay.getDay(), calendarDay.getMonth() + 1,
                             calendarDay.getYear());
                 }
             }

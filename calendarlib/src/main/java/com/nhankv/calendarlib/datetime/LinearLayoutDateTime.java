@@ -30,11 +30,6 @@ public class LinearLayoutDateTime extends LinearLayout {
         init(context);
     }
 
-    public LinearLayoutDateTime(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context);
-    }
-
     private void init(Context context) {
         initView(context);
         addView(context);
@@ -44,7 +39,7 @@ public class LinearLayoutDateTime extends LinearLayout {
         setWeightSum(6);
         setOrientation(VERTICAL);
         setGravity(Gravity.CENTER_HORIZONTAL);
-        setPadding(10, 10, 30, 10);
+        setPadding(10, 10, 10, 10);
     }
 
     private void addView(Context context) {
@@ -77,5 +72,67 @@ public class LinearLayoutDateTime extends LinearLayout {
         if (mCalendarViewCustom != null) {
             mCalendarViewCustom.setOnClickListenerDateTime(listenerDateTime);
         }
+    }
+
+    public String getTime() {
+        if (mLinearLayoutTime != null) {
+            return mLinearLayoutTime.getmIndexHour() + ":" + mLinearLayoutTime.getmIndexMinute() +
+                    ":" + mLinearLayoutTime.getmIndexSecond();
+        }
+        return "0:0:0";
+    }
+
+    public int getHour() {
+        if (mLinearLayoutTime != null) {
+            return mLinearLayoutTime.getmIndexHour();
+        }
+        return 0;
+    }
+
+    public int getMinute() {
+        if (mLinearLayoutTime != null) {
+            return mLinearLayoutTime.getmIndexMinute();
+        }
+        return 0;
+    }
+
+    public int getSecond() {
+        if (mLinearLayoutTime != null) {
+            mLinearLayoutTime.getmIndexSecond();
+        }
+        return 0;
+    }
+
+    public int getYear() {
+        try {
+            if (mCalendarViewCustom != null) {
+                return mCalendarViewCustom.getSelectedDate().getYear();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getMonth() {
+        try {
+            if (mCalendarViewCustom != null) {
+                return mCalendarViewCustom.getSelectedDate().getMonth() + 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getDay() {
+        try {
+            if (mCalendarViewCustom != null) {
+                return mCalendarViewCustom.getSelectedDate().getDay();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
