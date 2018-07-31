@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CalendarLib</string>
+ <!--   <string name="hour">Hour</string>
+    <string name="minute">Minute</string>
+    <string name="Second">Second</string>-->
+    <string name="hour">Giờ</string>
+    <string name="minute">Phút</string>
+    <string name="second">Giây</string>
+</resources>

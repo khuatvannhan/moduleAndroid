@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hour">Giờ</string>
+    <string name="minute">Phút</string>
+    <string name="Second">Giây</string>
+</resources>
